@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import logo from "./assert/images/logo.jpg";
 import './App.css';
+import React from "react";
 
-function App() {
-  return (
+class App extends React.Component{
+  url="https://www.bridgelabz.com";
+  constructor(){
+    super();
+    this.state = { userName: ' '}
+  }
+
+  onClick = (Sevent) =>{
+   console.log("Save button", Sevent);
+   window.open(this.url, "_blank");
+  }
+  onChangeName = (event) => {
+    console.log("Name", event.target.value);
+    this.setState({userName: event.target.value});
+  }
+  render(){
+    return(
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      Hello {this.state.userName} from Bridgelabz
       </header>
+      <img className="image" onClick={this.onClick} src={logo} alt="Bridgelabz Logo"/>
+      <div>
+        <input onChange={this.onChangeName}/>
+      </div>
     </div>
-  );
+  )
+}
 }
 
 export default App;
